@@ -29,7 +29,7 @@ jobs:
       MAX_JOBS: "1"
       CXX: "g++"
       PYTHONPATH: "${{ github.workspace }}/reproduction/src"
-      TORCH_EXTENSIONS_DIR: "${{ runner.temp }}/torch_kaserer_extensions"
+      TORCH_EXTENSIONS_DIR: "/tmp/torch_kaserer_extensions"
     steps:
       - uses: actions/checkout@v4
         with:
