@@ -68,6 +68,10 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install 'torch==2.6.0' --index-url https://download.pytorch.org/whl/cpu
           python -m pip install -r reproduction/requirements-cpu.txt
+          # Pinocchio's manylinux cmeel wheels store shared libraries outside
+          # the normal host loader path. Resolve them explicitly and persist.
+          export LD_LIBRARY_PATH="$(python -c 'import sysconfig; print(sysconfig.get_path("platlib") + "/cmeel.prefix/lib")'):${LD_LIBRARY_PATH:-}"
+          echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" >> "$GITHUB_ENV"
           python - <<'PY'
           import torch, numpy, pinocchio
           print("Torch", torch.__version__, "NumPy", numpy.__version__, "Pinocchio", pinocchio.__version__)
