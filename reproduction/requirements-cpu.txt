@@ -1,0 +1,4 @@
+# Frozen CPU replay; install torch first from the CPU-only PyTorch index.
+numpy==2.3.3
+pin==3.9.0
+ninja>=1.11,<2
