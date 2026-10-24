@@ -1,0 +1,90 @@
+{
+  "conventions": {
+    "jerk_limit": "source acceleration limit / jerk rise time",
+    "torque_rate_limit": "source torque limit / torque-rate rise time",
+    "ur5_acceleration": "5 rad/s^2 is an explicit assumed planning limit, not a manufacturer-certified physical limit"
+  },
+  "derivation": "Deterministically projected from the archived INTERNAL_VERIFIED_NOT_PUBLIC receipt and original limit YAMLs; the historical artifact path was absent.",
+  "derived_rate_contract_sha256": {
+    "panda": {
+      "0.05": "42a11047548a01168e9166037bc4b14722ae0041880fc89c509635bbd7476605",
+      "0.1": "a90d896fb4e0495d941d2653eb4857c3487b42d8b03e3fec2691fe251f642fed",
+      "0.2": "0d8e0b1fa9872d9898f3769687c584143dff32e8ecf1bede9055aeae99a3d54b"
+    },
+    "ur5": {
+      "0.05": "2c43a602381f436013c06b6a671e639df9d011aacf6584122dafa274f341f878",
+      "0.1": "9ad900d8bebd110d35a9a87b1372a444bbead43fd9c85f1b40a27a03c59836d9",
+      "0.2": "16b2691157221b4c34d00a3e272bbcd4cf8d467b64416695e34f641cbd4c1d53"
+    }
+  },
+  "historical_evidence_sha256": "60c581482d235868e61d6b3340a22f6a5609c2479e250a56c5bfe369b3af4c81",
+  "record_status": "REGENERATED_PUBLIC_PROJECTION_NOT_HISTORICAL_FILE",
+  "rise_time_seconds": {
+    "jerk": 0.1,
+    "torque_rate": 0.1
+  },
+  "robots": {
+    "panda": {
+      "acceleration": [
+        15.0,
+        7.5,
+        10.0,
+        12.5,
+        15.0,
+        20.0,
+        20.0
+      ],
+      "torque": [
+        87.0,
+        87.0,
+        87.0,
+        87.0,
+        12.0,
+        12.0,
+        12.0
+      ],
+      "velocity": [
+        2.3925,
+        2.3925,
+        2.3925,
+        2.3925,
+        2.871,
+        2.871,
+        2.871
+      ]
+    },
+    "ur5": {
+      "acceleration": [
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "torque": [
+        150.0,
+        150.0,
+        150.0,
+        28.0,
+        28.0,
+        28.0
+      ],
+      "velocity": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    }
+  },
+  "schema": "aorrtc_public_full_c3_limits_projection_v1",
+  "sensitivity_rise_times_seconds": [
+    0.05,
+    0.2
+  ],
+  "source_revision": "07ab69fc46436c59e4e355f69193bdb13f203b4e",
+  "vamp_revision": "f6de6a72e0725ba08e0829f0a34261a3f465aed7"
+}

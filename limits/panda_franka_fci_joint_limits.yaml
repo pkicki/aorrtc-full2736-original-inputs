@@ -1,0 +1,94 @@
+# Franka Emika Panda joint-space interface limits.
+#
+# Primary source:
+#   Franka Control Interface documentation, "Robot and interface specifications"
+#   https://frankaemika.github.io/docs/control_parameters.html
+#
+# These are Panda interface limits, not the more conservative planning limits
+# distributed by some MoveIt/Robowflex configurations.
+#
+# Units:
+#   velocity: rad/s
+#   acceleration: rad/s^2
+#   jerk: rad/s^3
+#   torque: Nm (documented here for provenance; URDF effort remains dynamics input)
+#   torque_rate: Nm/s
+
+joint_limits:
+  panda_joint1:
+    has_velocity_limits: true
+    max_velocity: 2.175
+    has_acceleration_limits: true
+    max_acceleration: 15.0
+    has_jerk_limits: true
+    max_jerk: 7500.0
+    has_effort_limits: true
+    max_effort: 87.0
+    has_torque_rate_limits: true
+    max_torque_rate: 1000.0
+  panda_joint2:
+    has_velocity_limits: true
+    max_velocity: 2.175
+    has_acceleration_limits: true
+    max_acceleration: 7.5
+    has_jerk_limits: true
+    max_jerk: 3750.0
+    has_effort_limits: true
+    max_effort: 87.0
+    has_torque_rate_limits: true
+    max_torque_rate: 1000.0
+  panda_joint3:
+    has_velocity_limits: true
+    max_velocity: 2.175
+    has_acceleration_limits: true
+    max_acceleration: 10.0
+    has_jerk_limits: true
+    max_jerk: 5000.0
+    has_effort_limits: true
+    max_effort: 87.0
+    has_torque_rate_limits: true
+    max_torque_rate: 1000.0
+  panda_joint4:
+    has_velocity_limits: true
+    max_velocity: 2.175
+    has_acceleration_limits: true
+    max_acceleration: 12.5
+    has_jerk_limits: true
+    max_jerk: 6250.0
+    has_effort_limits: true
+    max_effort: 87.0
+    has_torque_rate_limits: true
+    max_torque_rate: 1000.0
+  panda_joint5:
+    has_velocity_limits: true
+    max_velocity: 2.610
+    has_acceleration_limits: true
+    max_acceleration: 15.0
+    has_jerk_limits: true
+    max_jerk: 7500.0
+    has_effort_limits: true
+    max_effort: 12.0
+    has_torque_rate_limits: true
+    max_torque_rate: 1000.0
+  panda_joint6:
+    has_velocity_limits: true
+    max_velocity: 2.610
+    has_acceleration_limits: true
+    max_acceleration: 20.0
+    has_jerk_limits: true
+    max_jerk: 10000.0
+    has_effort_limits: true
+    max_effort: 12.0
+    has_torque_rate_limits: true
+    max_torque_rate: 1000.0
+  panda_joint7:
+    has_velocity_limits: true
+    max_velocity: 2.610
+    has_acceleration_limits: true
+    max_acceleration: 20.0
+    has_jerk_limits: true
+    max_jerk: 10000.0
+    has_effort_limits: true
+    max_effort: 12.0
+    has_torque_rate_limits: true
+    max_torque_rate: 1000.0

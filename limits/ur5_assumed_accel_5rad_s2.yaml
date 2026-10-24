@@ -1,0 +1,26 @@
+# UR5 AORRTC sensitivity C2 policy: ASSUMED acceleration, NOT a physical limit.
+# Velocity/effort come exclusively from the pinned VAMP UR5 URDF.
+# The 5 rad/s^2 value is a deliberately explicit planning assumption.
+# Official UR docs state accelerations are pose/load-dependent and not
+# specified as fixed physical axis limits.
+# https://docs.universal-robots.com/Universal_Robots_ROS2_Documentation/doc/ur_tutorials/my_robot_cell/doc/build_moveit_config.html
+# Do not present as manufacturer-certified acceleration or full C3.
+joint_limits:
+  shoulder_pan_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  shoulder_lift_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  elbow_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  wrist_1_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  wrist_2_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
+  wrist_3_joint:
+    has_acceleration_limits: true
+    max_acceleration: 5.0
