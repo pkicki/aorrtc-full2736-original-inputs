@@ -11,3 +11,10 @@ Frozen source revision: `07ab69fc46436c59e4e355f69193bdb13f203b4e`; VAMP revisio
 The package includes raw per-path Kaserer, Kaserer_fixed, fast_v1 and V2 archives, PDF q1/q5 and external-baseline Full2736 records, certification diagnostics, experiment configurations and reports. `manifest.json` and `SHA256SUMS.txt` pin every shipped byte.
 
 The exact original historical derived identity and rate-limit JSON files were not present in the archived repository. Their public projections are explicitly labeled regenerated, not historical originals. The project source commit is identified but its private solver code is not redistributed. UR5 acceleration 5 rad/s^2 is an assumption, not a manufacturer limit. See `REPRODUCE.md`.
+
+
+## Collection and export provenance
+
+The original source populations are MotionBenchMaker Panda (650 exported from 700 attempts), MPINets Panda (1,519 exported from 1,800 attempts), and MotionBenchMaker UR5 (567 exported from 700 attempts). The four files under each `inputs/<track>/` directory are the byte-exact original `aorrtc_all.pt` cache, source-order `exported_ids.txt`, `.attempts.json` metadata, and `.export_stats.json`. The cache is a PyTorch format-version-1 mapping with a `records` list; the ID at each list position identifies that record. No paths were regenerated or reordered for this release.
+
+The historical collector/export implementation is pinned to project source commit `07ab69fc46436c59e4e355f69193bdb13f203b4e` and VAMP source/model commit `f6de6a72e0725ba08e0829f0a34261a3f465aed7`. The project source repository is private, so the executable exporter is not redistributed here. The public package preserves the exact outputs and the metadata needed to inspect and verify them; reproducing the historical export operation itself requires authorized access to that source commit. For third-party model files, use the public VAMP checkout and do not copy them into this CC BY dataset package.
