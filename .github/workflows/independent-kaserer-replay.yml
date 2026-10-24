@@ -1,0 +1,105 @@
+name: Independent frozen Kaserer Full-C3 CPU replay
+
+on:
+  push:
+    branches:
+      - reproduce/kaserer-source-and-smoke-20261024
+      - main
+    paths:
+      - "reproduction/**"
+      - ".github/workflows/independent-kaserer-replay.yml"
+  pull_request:
+    paths:
+      - "reproduction/**"
+      - ".github/workflows/independent-kaserer-replay.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  frozen-source-original-path-dual-grid:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 55
+    env:
+      CUDA_VISIBLE_DEVICES: ""
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MAX_JOBS: "1"
+      CXX: "g++"
+      PYTHONPATH: "${{ github.workspace }}/reproduction/src"
+      TORCH_EXTENSIONS_DIR: "${{ runner.temp }}/torch_kaserer_extensions"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          lfs: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify original solver Git blob identities
+        run: |
+          test "$(git hash-object reproduction/src/curobo_timeopt/baselines/kaserer_dp3.py)" = "28cba710ae611222b5c9832604fcca913b24b79a"
+          test "$(git hash-object reproduction/src/curobo_timeopt/baselines/_kaserer_dp3_fast.cpp)" = "4035b8ff1c8474c3704e8b7d4a65411ef6e481e8"
+          test "$(git hash-object reproduction/src/curobo_timeopt/baselines/kaserer_pinocchio_precompute.py)" = "acbda2b7a4329c639b4773116f2ff48f3b8709ea"
+          test "$(git hash-object reproduction/src/curobo_timeopt/baselines/kaserer_fixed.py)" = "00ea5e4a7baee9b4df654eed4da5df8f1f0ebd45"
+          python -m compileall -q reproduction
+      - name: Hydrate frozen original public Panda cache
+        run: |
+          git lfs install --local
+          git lfs pull --include="inputs/mbm_panda/aorrtc_all.pt" --exclude=""
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p = Path("inputs/mbm_panda/aorrtc_all.pt")
+          assert p.stat().st_size == 12733916
+          assert hashlib.sha256(p.read_bytes()).hexdigest() == "689dca9fc8d6c91357ca99959fc3252e835f7701a01092bc92d1ee7af5101478"
+          print("ORIGINAL_PANDA_GEOMETRY_PIN_VERIFIED")
+          PY
+      - name: Fetch exact pinned public VAMP model
+        run: |
+          git init "${{ runner.temp }}/vamp"
+          git -C "${{ runner.temp }}/vamp" fetch --depth=1 https://github.com/KavrakiLab/vamp.git f6de6a72e0725ba08e0829f0a34261a3f465aed7
+          git -C "${{ runner.temp }}/vamp" checkout --detach FETCH_HEAD
+          echo "VAMP_REPO=${{ runner.temp }}/vamp" >> "$GITHUB_ENV"
+      - name: Install qualified CPU replay dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'torch==2.6.0' --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r reproduction/requirements-cpu.txt
+          python - <<'PY'
+          import torch, numpy, pinocchio
+          print("Torch", torch.__version__, "NumPy", numpy.__version__, "Pinocchio", pinocchio.__version__)
+          assert torch.__version__.startswith("2.6.0")
+          assert numpy.__version__ == "2.3.3"
+          assert pinocchio.__version__ == "3.9.0"
+          PY
+      - name: Re-solve original Panda path and independently certify full C3
+        run: |
+          python reproduction/run_one.py \
+            --release-root "$GITHUB_WORKSPACE" \
+            --vamp "$VAMP_REPO" \
+            --track mbm_panda \
+            --problem-id motion_benchmaker/panda/bookshelf_small/0008 \
+            --method dp3_fixed_fast \
+            --output "${{ runner.temp }}/independent_replay.json"
+      - name: Assert reproducibility receipt
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          j=json.loads((Path(os.environ["RUNNER_TEMP"]) / "independent_replay.json").read_text())
+          assert j["five_family_certified"] is True, j
+          assert abs(j["duration_s"] - 1.463802100095559) <= 1e-8, j
+          assert j["audits"]["S8193"]["strict_five_family_certified"], j
+          assert j["audits"]["S32768"]["strict_five_family_certified"], j
+          print("INDEPENDENT_REPLAY_PASSED")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-panda-independent-c3-replay
+          path: "${{ runner.temp }}/independent_replay.json"
+          if-no-files-found: ignore
+          retention-days: 90
