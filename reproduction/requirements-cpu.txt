@@ -2,3 +2,7 @@
 numpy==2.3.3
 pin==3.9.0
 ninja>=1.11,<2
+# Pin 2025 CMeel ABI versions: pin 3.9.0 links urdfdom .so.4 and tinyxml2 .so.10.
+# Newer 2026 major wheels are incorrectly admitted by broad >= dependency floors.
+cmeel-urdfdom==4.0.1
+cmeel-tinyxml2==10.0.0
