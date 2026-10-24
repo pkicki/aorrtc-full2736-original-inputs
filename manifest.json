@@ -42,6 +42,13 @@
       "size_bytes": 13955,
       "source_repo_path": "reports/KASERER_PINOCCHIO_CONTRACTION_V2_RESULTS_2026-10-24.md"
     },
+    "evidence/data/aorrtc_dual_20261019/matched_source_identity_bb3d13dac_20261019_01.json": {
+      "category": "historical_source_identity_receipt",
+      "historical_original": true,
+      "sha256": "60c581482d235868e61d6b3340a22f6a5609c2479e250a56c5bfe369b3af4c81",
+      "size_bytes": 613467,
+      "source_repo_path": "reports/data/aorrtc_dual_20261019/matched_source_identity_bb3d13dac_20261019_01.json"
+    },
     "evidence/data/aorrtc_full_c3_confirm300_20261020/RETRY_REASONS_recheck.txt": {
       "category": "frozen_benchmark_result",
       "historical_original": true,
@@ -6408,7 +6415,7 @@
     "Original full-C3 outcomes remain source-qualified to frozen CPU runtime"
   ],
   "ownership_attestation": "Dataset owner authorized publication (2026-10-24)",
-  "release_version": "v1.0.2",
+  "release_version": "v1.0.3",
   "schema": "aorrtc_full2736_public_research_release_v2",
   "source_counts": {
     "mbm_panda": 650,
