@@ -1,0 +1,64 @@
+{
+  "schema": "public_kaserer_independent_replay_receipt_v1",
+  "ci_run": "https://github.com/pkicki/aorrtc-full2736-original-inputs/actions/runs/40135314791",
+  "ci_run_id": 40135314791,
+  "ci_job_id": 120995487618,
+  "source_branch_commit": "f3fa50af1ec6f9cf774c654239a00ca84da304d5",
+  "software": {
+    "torch": "2.6.0+cpu",
+    "numpy": "2.3.3",
+    "pinocchio": "3.9.0"
+  },
+  "source_frozen_commit": "98e9f780bebc6f94b62a4ee8072da230dcecd1fd",
+  "dataset_release_commit": "6268f7635b5e8781a6b01a721fcf3c21b66b1db4",
+  "verified_result": {
+    "audits": {
+      "S32768": {
+        "actual_samples": 32957,
+        "base_samples": 32768,
+        "endpoint_speed": [
+          0,
+          0
+        ],
+        "max_slope_jump": 2.5757174171303632e-14,
+        "max_utilization": {
+          "acceleration": 0.9467496137761041,
+          "jerk": 0.9696149669155784,
+          "torque": 0.7952663229387626,
+          "torque_rate": 0.9875301519502195,
+          "velocity": 0.9845246781935378
+        },
+        "strict_five_family_certified": true
+      },
+      "S8193": {
+        "actual_samples": 8382,
+        "base_samples": 8193,
+        "endpoint_speed": [
+          0,
+          0
+        ],
+        "max_slope_jump": 2.5757174171303632e-14,
+        "max_utilization": {
+          "acceleration": 0.9467492564494437,
+          "jerk": 0.9696094252392686,
+          "torque": 0.7952640988350258,
+          "torque_rate": 0.9875287350426701,
+          "velocity": 0.9845246780133887
+        },
+        "strict_five_family_certified": true
+      }
+    },
+    "duration_difference_s": -2.220446049250313e-16,
+    "duration_s": 1.4638021000955588,
+    "expected_frozen_duration_s": 1.463802100095559,
+    "five_family_certified": true,
+    "frozen_solver_source_commit": "98e9f780bebc6f94b62a4ee8072da230dcecd1fd",
+    "method": "dp3_fixed_fast",
+    "path_fingerprint": "db4bfc2faad5ddb9ecddf94df7979d88c3ae59f778d54af7fec9899f0fe9f645",
+    "problem_id": "motion_benchmaker/panda/bookshelf_small/0008",
+    "request_wall_ms": 387.4472920001608,
+    "solver_status": "solved",
+    "track": "mbm_panda",
+    "vamp_revision": "f6de6a72e0725ba08e0829f0a34261a3f465aed7"
+  }
+}
