@@ -1,0 +1,29 @@
+{
+  "schema": "kaserer_frozen_source_blob_inventory_v1",
+  "upstream_repository": "pkicki/time_optimal_curobo",
+  "upstream_commit": "98e9f780bebc6f94b62a4ee8072da230dcecd1fd",
+  "source_files_git_blob_sha1": {
+    "src/curobo_timeopt/baselines/kaserer_dp3.py": "28cba710ae611222b5c9832604fcca913b24b79a",
+    "src/curobo_timeopt/baselines/kaserer_dp3_fast.py": "f64c3ba2292b17440d3d98a6563e79b17b84f8c1",
+    "src/curobo_timeopt/baselines/kaserer_fixed.py": "00ea5e4a7baee9b4df654eed4da5df8f1f0ebd45",
+    "src/curobo_timeopt/baselines/kaserer_pinocchio_precompute.py": "acbda2b7a4329c639b4773116f2ff48f3b8709ea",
+    "src/curobo_timeopt/baselines/_kaserer_dp3_fast.cpp": "4035b8ff1c8474c3704e8b7d4a65411ef6e481e8",
+    "src/curobo_timeopt/baselines/toppra_ra.py": "923cd34c66e9a3131bf6e78003d3e66337650a60",
+    "src/curobo_timeopt/baselines/constant_acceleration_audit.py": "5e428d3a5e5380c3864d74764ce9f18e7f29c575",
+    "src/curobo_timeopt/retiming/gpu_dense_validation.py": "fac89fe642fdc20f5729ba5a0ca6ef15c4fa17a2",
+    "src/curobo_timeopt/retiming/kinematic_reductions_triton.py": "2b2ce4eba843fd9e3794e636cf33d92ae417e36c",
+    "src/curobo_timeopt/retiming/bspline/basis.py": "9dcb6848728d7b38bf70204866788acb4fdda214",
+    "src/curobo_timeopt/retiming/bspline/cpu_pinocchio.py": "d92979f003d92f99e5cf4e08c1bce31d67a95a64",
+    "src/curobo_timeopt/retiming/bspline/pinocchio_torch_bridge.py": "455e919ce5a3773eb3dbbf387bb47b43489d7618",
+    "src/curobo_timeopt/retiming/problem.py": "696849ce8fa05d4d0f2d969c388c767a002be75d",
+    "src/curobo_timeopt/path/bspline_path.py": "54761ee56266553cda9d699f644252448710a62b",
+    "src/curobo_timeopt/path/base.py": "b5bdbdec54d32bcce54352c90840f4d3a573f70b",
+    "src/curobo_timeopt/types.py": "a7b10fbfd21c2a0910ecf8d3738aa72f5a3c78d6",
+    "src/curobo_timeopt/dynamics/base.py": "24d28b9b0ac46ec51f17ee6dc920aa50152b2188",
+    "src/curobo_timeopt/dynamics/coefficients.py": "fd754128e8705b9d007a03733c350ef8285903d6",
+    "src/curobo_timeopt/dynamics/validation.py": "622afc2b42349a57202cd7d1ed749021b29104ad",
+    "src/curobo_timeopt/dynamics/__init__.py": "dc5c4542c5d9eb57551a61ccb68ee6b5a5d09951",
+    "src/curobo_timeopt/__init__.py": "6f506eddcc8f9c635242a826e6ec33f6a902e60e"
+  },
+  "non_identical_files": "Only reproduction entry point, packaging shims, documentation and CI are newly written."
+}
